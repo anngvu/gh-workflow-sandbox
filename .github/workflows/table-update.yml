@@ -14,7 +14,7 @@ jobs:
     name: Rebuild STUDY_RESOURCE
     runs-on: ubuntu-latest
     steps:
-      - uses: nf-osi/actions/connect-study-resource@86d2c1aeb745a099f686c42827c29129171a05ee
+      - uses: nf-osi/actions/connect-study-resource@458d6063bb69b6022d04d06305ad342bcad4138f
         with: 
           files: syn16858331
           resources: syn26450069
