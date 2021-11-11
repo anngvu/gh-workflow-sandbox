@@ -2,8 +2,8 @@ name: Rebuild STUDY_RESOURCE
 
 on:
   schedule:
-    # Runs at 11:11 AM (Mountain Time) on day 11 of month
-    - cron:  '11 18 11 * *'
+    # Runs at 11:11 AM (PST) on day 11 of month
+    - cron:  '11 19 11 * *'
   
   # Also can run manually from the Actions tab
   workflow_dispatch:
