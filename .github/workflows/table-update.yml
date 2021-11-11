@@ -1,0 +1,35 @@
+name: Rebuild STUDY_RESOURCE
+
+on:
+  schedule:
+    # Runs at 11:11 AM (Mountain Time) on day 11 of month
+    - cron:  '11 18 11 * *'
+  
+  # Also can run manually from the Actions tab
+  workflow_dispatch:
+  
+
+jobs:
+  build:
+    name: Rebuild STUDY_RESOURCE
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nf-osi/actions/connect-study-table@86d2c1aeb745a099f686c42827c29129171a05ee
+        with: 
+          files: syn16858331
+          resources: syn26450069
+          result: syn26452699
+        env: 
+          SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
+          
+  version:
+    name: Synapse versioning of new build
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nf-osi/actions/create-table-snapshot@451d4e143ab09c98d5b9c900200bc2978e7bc378
+        with: 
+          table: syn26452699
+        env: 
+          SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
+
